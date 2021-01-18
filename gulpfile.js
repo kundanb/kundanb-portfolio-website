@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const del = require('del');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
@@ -7,7 +6,7 @@ const imagemin = require('gulp-imagemin');
 
 sass.compiler = require('node-sass');
 
-const cleanBuild = () => del(['build/css', 'build/js', 'build/img']);
+const buildHTML = () => gulp.src('src/**/*.html').pipe(gulp.dest('build'));
 
 const buildCSS = () =>
   gulp
@@ -24,17 +23,17 @@ const buildJS = () =>
 
 const buildImg = () =>
   gulp
-    .src('src/js/**/*')
+    .src(['src/img/**/*'])
     .pipe(imagemin({ interlaced: true }))
     .pipe(gulp.dest('build/img'));
 
-const build = gulp.series(
-  cleanBuild,
-  gulp.parallel(buildCSS, buildJS, buildImg)
-);
+const build = gulp.parallel(buildHTML, buildCSS, buildJS, buildImg);
 
 const watch = () => {
-  gulp.watch(['src/**/*'], build);
+  gulp.watch(['src/**/*.html'], buildHTML);
+  gulp.watch(['src/scss/**/*'], buildCSS);
+  gulp.watch(['src/js/**/*'], buildJS);
+  gulp.watch(['src/img/**/*'], buildImg);
 };
 
 exports.build = build;
