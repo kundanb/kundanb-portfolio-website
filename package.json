@@ -1,0 +1,15 @@
+{
+  "name": "kundanb-portfolio-website",
+  "version": "1.0.0",
+  "description": "Kundan Bhasin (kundanb) Portfolio Website",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kundanb/kundanb-portfolio-website.git"
+  },
+  "author": "Kundan Bhasin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kundanb/kundanb-portfolio-website/issues"
+  },
+  "homepage": "https://github.com/kundanb/kundanb-portfolio-website#readme"
+}
