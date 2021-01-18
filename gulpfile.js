@@ -7,7 +7,7 @@ const imagemin = require('gulp-imagemin');
 
 sass.compiler = require('node-sass');
 
-const cleanBuild = () => del('build');
+const cleanBuild = () => del(['build/css', 'build/js', 'build/img']);
 
 const buildCSS = () =>
   gulp
